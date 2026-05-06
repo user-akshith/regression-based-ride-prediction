@@ -16,8 +16,6 @@ htmlcov/
 
 db.sqlite3-journal
 
-staticfiles/
-
 .env
 .env.*
 
@@ -29,3 +27,4 @@ Desktop.ini
 .vscode/
 
 db.sqlite3
+media/

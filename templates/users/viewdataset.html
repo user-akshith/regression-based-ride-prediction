@@ -1,0 +1,118 @@
+{% extends 'users/userbase.html' %}
+{% block contents %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datasetTable').DataTable({
+            "pageLength": 50,
+            "lengthMenu": [10, 25, 50, 100],
+            "language": {
+                "search": "Filter records:",
+                "lengthMenu": "Show _MENU_ entries",
+                "info": "Showing _START_ to _END_ of _TOTAL_ entries",
+                "infoEmpty": "No entries available",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "paginate": {
+                    "next": "Next",
+                    "previous": "Previous"
+                }
+            }
+        });
+    });
+</script>
+
+<div class="section-header">
+    <h2 class="section-title wow fadeInDown">Dataset View:</h2>
+    <p class="wow fadeInDown">Here is the dataset you requested. You can filter and paginate through the records for better usability.</p>
+</div>
+
+<div class="row" style="margin: 10px;">
+    <div class="table-responsive">
+        <div class="card">
+            <div class="card-body">
+                <div>{{ data|safe }}</div> <!-- Render the HTML table here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Enhanced Section Header Styles */
+    .section-header {
+        background-image: radial-gradient( circle 817.6px at 10% 20%,  rgba(178,34,34,1) 0%, rgba(255,87,51,1) 41.9%,); /* Gradient background */
+        color: white; /* Text color */
+        padding: 20px; /* Padding for header */
+        border-radius: 10px; /* Rounded corners */
+        text-align: center; /* Center align text */
+        margin: 20px 0; /* Margin around header */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    .section-title {
+        font-size: 2em; /* Font size for title */
+        margin-bottom: 10px; /* Space below title */
+    }
+
+    .section-header p {
+        font-size: 1.2em; /* Font size for paragraph */
+        margin: 0; /* Remove default margin */
+    }
+
+    /* Card Styling for Dataset Table */
+    .card {
+        background-color: #ffffff; /* White background for card */
+        border-radius: 10px; /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.3s ease; /* Animation on hover */
+        overflow: hidden; /* Prevent content overflow */
+        margin: 20px 0; /* Margin around card */
+    }
+
+    .card-body {
+        padding: 20px; /* Padding inside card */
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f9f9f9; /* Light grey background for table */
+    }
+
+    th, td {
+        padding: 8px; /* Padding for table cells */
+        text-align: center; /* Center align text */
+        border: 1px solid #ddd; /* Light border for cells */
+    }
+
+    th {
+        background-color: #c31432; /* Header background color */
+        color: white; /* Header text color */
+        transition: background-color 0.3s; /* Transition for hover */
+    }
+
+    tr:hover {
+        background-color: #e0f7fa; /* Light cyan on row hover */
+        transition: background-color 0.3s; /* Transition for hover */
+    }
+
+    td {
+        background-color: #ffffff; /* White background for table cells */
+    }
+
+    /* Card Hover Effect */
+    .card:hover {
+        transform: translateY(-5px); /* Lift card effect */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .table-responsive {
+            overflow-x: auto; /* Allow horizontal scrolling */
+        }
+    }
+</style>
+
+{% endblock %}
